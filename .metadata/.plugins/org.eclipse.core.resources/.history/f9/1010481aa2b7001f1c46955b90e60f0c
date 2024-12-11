@@ -1,0 +1,10 @@
+package hust.soict.dsai.aims.media;
+
+public class CompactDisc extends Media{
+	 private String artist;
+	 private ArrayList<Track> tracks;
+	public CompactDisc() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
