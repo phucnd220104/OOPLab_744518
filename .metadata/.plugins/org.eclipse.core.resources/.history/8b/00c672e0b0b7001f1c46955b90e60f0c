@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Aims {
     public static void main(String[] args) {
-        DigitalVideoDisc dvd = new DigitalVideoDisc(1,"Cinderella","Fantasy", 18.5f,"Jack Grelish",97);
+        DigitalVideoDisc dvd = new DigitalVideoDisc(1,"Cinderella","Fantasy", 18.5f,"Do Gia Huy",97);
         ArrayList<Track> tracks = new ArrayList<Track>();
         tracks.add(new Track("Happy new year",3));
         tracks.add(new Track("i want it that way",4));

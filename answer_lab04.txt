@@ -1,0 +1,38 @@
+Question 1: Which class should implement the Comparable interface?
+- The class that should implement the Comparable interface is the class containing the objects you want to compare,
+in this case, the abstract class "Media".
+
+Question 2: In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+	To implement the compareTo() method, the attributes of the objects should be compared. 
+	For the requirement to sort by title first and then by cost, the implementation can be as follows:
+	@Override
+	public int compareTo(Media other) {
+	if (!this.getTitle().equals(other.getTitle())) {
+	return this.getTitle().compareTo(other.getTitle());
+	} else {
+	return Double.compare(this.getCost(), other.getCost());
+	}
+	}
+
+Question 3:Can we have two ordering rules of the item (by title then cost and by cost then title)
+	 if we use this Comparable interface approach?
+No, with the Comparable interface, you can only have one sorting rule for each class. 
+This is because the `compareTo()` method only returns a single integer value.
+
+Question 4: Suppose the DVDs has a different ordering rule from the other media types, 
+that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+You can create a separate class for DVD and implement the compareTo() method:
+
+public class DVD extends Media implements Comparable<DVD> {
+@Override
+public int compareTo(DVD other) {
+if (!this.getTitle().equals(other.getTitle())) {
+return this.getTitle().compareTo(other.getTitle());
+} else if (this instanceof DVD && other instanceof DVD) {
+return Integer.compare(((DVD) other).getLength(), ((DVD)
+this).getLength());
+} else {
+return Double.compare(this.getCost(), other.getCost());
+}
+}
+}
