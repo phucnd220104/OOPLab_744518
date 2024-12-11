@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+D:\20241\Objectorientedprogramming\Tailieutrenlop\Thinghiem\lab02\.metadata\.plugins\org.eclipse.jdt.core
-2920752648.index
-1865797976.index
-1288848795.index

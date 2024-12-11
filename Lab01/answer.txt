@@ -1,2 +1,0 @@
-Ex2.2.6:
-Seperate the program  into three method: Press 1 to choose to solve the 1st degree equation, press 2 to solve the system of 1st degree equations, press 3 to solve the 2nd degree equation.
