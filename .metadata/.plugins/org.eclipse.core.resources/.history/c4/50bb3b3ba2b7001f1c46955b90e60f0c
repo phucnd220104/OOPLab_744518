@@ -1,0 +1,15 @@
+package hust.soict.dsai.aims.media;
+
+import java.util.ArrayList;
+
+public class CompactDisc extends Media{
+	 private String artist;
+	 private ArrayList<Track> tracks;
+	 public CompactDisc(int id, String title, String category, float cost,String artist, ArrayList<Track> tracks) {
+	        super(id, title, category, cost);
+	        this.tracks = tracks;
+	        this.artist = artist;
+	        this.setLength(getLength());
+	   }
+
+}
