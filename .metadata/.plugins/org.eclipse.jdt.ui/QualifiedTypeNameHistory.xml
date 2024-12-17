@@ -3,4 +3,6 @@
     <fullyQualifiedTypeName name="Cart.Cart"/>
     <fullyQualifiedTypeName name="Disc.DigitalVideoDisc"/>
     <fullyQualifiedTypeName name="Store.Store"/>
+    <fullyQualifiedTypeName name="java.awt.ComponentOrientation"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
 </qualifiedTypeNameHistroy>
