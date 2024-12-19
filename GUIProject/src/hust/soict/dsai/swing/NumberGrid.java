@@ -42,11 +42,17 @@ public class NumberGrid extends JFrame{
 			}
 			else if(button.equals("DEL")) 
 			{
-				//handle the DEL case
+				String currentText = tfDisplay.getText();
+	            if (!currentText.isEmpty()) {
+	                tfDisplay.setText(currentText.substring(0, currentText.length() - 1));
+	            }
 			}
 			else 
 			{
-				//handle the C case
+				String currentText = tfDisplay.getText();
+	            if (!currentText.isEmpty()) {
+	                tfDisplay.setText(currentText.substring(0, 0));
+	            }
 			}
 		}
 	}

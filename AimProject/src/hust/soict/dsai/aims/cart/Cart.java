@@ -2,11 +2,14 @@ package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.lang.module.ModuleDescriptor;
 import java.util.*;
 
 public class Cart {
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     public void addMedia(Media item) {
         if(itemsOrdered.contains(item)) {
@@ -79,6 +82,10 @@ public class Cart {
             }
         }
         return null;
+    }
+    
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 
     public void emptyCart() {
