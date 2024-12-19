@@ -1,13 +1,14 @@
 package hust.soict.dsai.aims.media;
+import java.awt.TextField;
 import java.util.ArrayList;
 import java.util.List;
 public class Book extends Media {
     //Ke thua thuoc tinh id, title, category, cost
     private List<String> authors = new ArrayList<String>();
 
-    public Book(int id, String title, String category, float cost, List<String> authors) {
+    public Book(int id, String title, String category, float cost, List<String> authors2) {
         super(id, title, category, cost);
-        this.authors = authors;
+        this.authors= authors2;
     }
 
     public Book(int id, String title, String category, float cost) {

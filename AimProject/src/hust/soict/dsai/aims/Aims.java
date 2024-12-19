@@ -1,20 +1,21 @@
 package hust.soict.dsai.aims;
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.media.*;
 import java.util.*;
 
 public class Aims {
-    public static void main(String[] args) {
-        DigitalVideoDisc dvd = new DigitalVideoDisc(1,"Cinderella","Fantasy", 18.5f,"Jack Grelish",97);
+	public static void main(String[] args) throws PlayerException{
+        DigitalVideoDisc dvd = new DigitalVideoDisc(1,"Cinderella","Fantasy", 18.5f,"Do Gia Huy",97);
         ArrayList<Track> tracks = new ArrayList<Track>();
         tracks.add(new Track("Happy new year",3));
         tracks.add(new Track("i want it that way",4));
-        CompactDisc cd = new CompactDisc(2,"Best Classic Music","USUK",25.5f,"Various artist",tracks);
+        CompactDisc cd = new CompactDisc(2,"Nhac bat hu ngay xua","Nhac Au My Latin",25.5f,"Various artist",tracks);
         List<String> authors = new ArrayList<String>();
-        authors.add("Dinh Phuc");
-        authors.add("Phuc Dinh");
-        Book book   = new Book(3,"Di khi ta con tre","Short story",25.2f,authors);
+        authors.add("Phung Quan");
+        authors.add("Gia Huy");
+        Book book   = new Book(3,"Tuoi tho du doi","novel",25.2f,authors);
         Store store = new Store();
         store.addMedia(cd);
         store.addMedia(dvd);
@@ -24,11 +25,10 @@ public class Aims {
         showMenu(scanner, store, cart);
     }
 
-    public static void showMenu(Scanner scanner, Store store, Cart cart) {
+    public static void showMenu(Scanner scanner, Store store, Cart cart) throws PlayerException {
         while (true) {
             System.out.println(
-                    """
-                                           
+                    """                
                             AIMS:
                             --------------------------------
                             1. View store
@@ -136,7 +136,6 @@ public class Aims {
                         System.out.println(item.getClass().getSimpleName() + " " + item.getTitle() + "'ve been deleted from the store !");
                     }
                 }
-
             }
             case 3 -> {
                 System.out.println("Enter item's id: ");
@@ -155,8 +154,7 @@ public class Aims {
             }
         }
     }
-
-    public static void mediaDetailsMenu(Scanner scanner, Store store, Cart cart) {
+    public static void mediaDetailsMenu(Scanner scanner, Store store, Cart cart) throws PlayerException {
         System.out.print("Enter media's title: ");
         String title = scanner.nextLine();
         Media item = store.findMedia(title);
@@ -199,7 +197,7 @@ public class Aims {
         }
     }
 
-    public static void storeMenu(Scanner scanner, Store store, Cart cart) {
+    public static void storeMenu(Scanner scanner, Store store, Cart cart) throws PlayerException {
         System.out.println(store);
         while (true) {
             System.out.println("Options: ");
@@ -242,7 +240,11 @@ public class Aims {
                                 dvd.play();
                             }
                             if (item instanceof CompactDisc cd) {
-                                cd.play();
+                                try {
+                                    cd.play();
+                                } catch (PlayerException e) {
+                                    System.out.println("asd");
+                                }
                             }
                         }
                     }
@@ -255,7 +257,7 @@ public class Aims {
         }
     }
 
-    public static void cartMenu(Scanner scanner,Cart cart) {
+    public static void cartMenu(Scanner scanner,Cart cart) throws PlayerException{
         while (true) {
             System.out.println("""
                     Options:

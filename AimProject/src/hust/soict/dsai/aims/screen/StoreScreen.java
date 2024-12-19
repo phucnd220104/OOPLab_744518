@@ -1,9 +1,11 @@
 package hust.soict.dsai.aims.screen;
+
 import javax.swing.*;
 import javafx.scene.control.Tab;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.store.Store;
+import hust.soict.dsai.aims.media.Book;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StoreScreen extends JFrame {
-    private Store store;
+	private Store store;
     private Container cp;
     private Cart cart;
     JPanel createNorth() {
@@ -26,7 +28,6 @@ public class StoreScreen extends JFrame {
     JMenuBar createMenuBar() {
         JMenu menu = new JMenu("Options");
         JMenu smUpdateStore = new JMenu("Update Store");
-        smUpdateStore.add(new JMenuItem("Add Book"));
 
         JMenuItem addCD = new JMenuItem("Add CD");
         smUpdateStore.add(addCD);
@@ -36,7 +37,16 @@ public class StoreScreen extends JFrame {
                 AddCDStoreScreen popUp = new AddCDStoreScreen(store);
             }
         });
-
+        
+        JMenuItem addBook = new JMenuItem("Add Book");
+        smUpdateStore.add(addBook);
+        addBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddBookStoreScreen popUp = new AddBookStoreScreen(store);
+            }
+        });
+        
         JMenuItem addDVD = new JMenuItem("Add DVD");
         smUpdateStore.add(addDVD);
         addDVD.addActionListener(new ActionListener() {
@@ -45,6 +55,8 @@ public class StoreScreen extends JFrame {
                 AddDVDStoreScreen popUp = new AddDVDStoreScreen(store);
             }
         });
+        
+        
         menu.add(smUpdateStore);
         menu.add(new JMenuItem("View store"));
         menu.add(new JMenuItem("View cart"));
@@ -84,7 +96,7 @@ public class StoreScreen extends JFrame {
     JPanel createCenter() {
         JPanel center = new JPanel();
         center.setLayout(new GridLayout(3,3,2,2));
-        LinkedList<Media> mediaStore = store.getItemsInStore();
+        List<Media> mediaStore = store.getItemsInStore();
         for(Media media : mediaStore) {
             MediaStore cell = new MediaStore(media,cart);
             center.add(cell);
@@ -181,7 +193,7 @@ public class StoreScreen extends JFrame {
             this.show();
         }
     }
-
+    
     private class AddCDStoreScreen extends JFrame {
         public AddCDStoreScreen(Store store) {
             this.setLayout(new GridLayout(7, 2, 5, 5));
@@ -220,4 +232,44 @@ public class StoreScreen extends JFrame {
             this.show();
         }
     }
+    
+    private class AddBookStoreScreen extends JFrame {
+        public AddBookStoreScreen(Store store) {
+            this.setLayout(new GridLayout(7, 2, 5, 5));
+            this.add(new JLabel("Enter title: "));
+            TextField title = new TextField(10);
+            this.add(title);
+            this.add(new JLabel("Enter category: "));
+            TextField category = new TextField(10);
+            this.add(category);
+            this.add(new JLabel("Enter cost: "));
+            TextField cost = new TextField(10);
+            this.add(cost);
+            this.add(new JLabel("Enter author: "));
+            TextField author = new TextField(10);
+            this.add(author);
+            List<String> authors = new ArrayList<String>();
+            authors.add(author.getText());
+            this.setTitle("Add Book");
+            this.pack();
+            JButton turnInBtn = new JButton("Add");
+            this.add(turnInBtn);
+            turnInBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    Book book = new Book(02, title.getText(), category.getText(), Float.parseFloat(cost.getText()),authors);
+                    store.addMedia(book);
+                    cp.add(createCenter(), BorderLayout.CENTER);
+                    cp.revalidate();
+                    title.setText("");
+                    category.setText("");
+                    cost.setText("");
+                    author.setText("");
+                }
+            });
+            this.show();
+        }
+    }
+    
 }

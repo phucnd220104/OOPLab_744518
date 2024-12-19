@@ -1,8 +1,8 @@
 package hust.soict.dsai.aims.store;
 import hust.soict.dsai.aims.media.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 public class Store {
-    private LinkedList<Media> itemsInStore = new LinkedList<Media>();
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
     private boolean checkMedia(Media disc) {
         for (Media item : itemsInStore) {
@@ -22,7 +22,7 @@ public class Store {
         return null;
     }
 
-    public LinkedList<Media> getItemsInStore() { return itemsInStore; }
+    public ArrayList<Media> getItemsInStore() { return itemsInStore; }
 
     public void removeMedia(Media disc) {
         if(checkMedia(disc)) {

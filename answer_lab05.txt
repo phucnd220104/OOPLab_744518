@@ -1,0 +1,9 @@
+Question: What are the differences between the Swing and AWT implementation?
+Feature			AWT					Swing
+Component Type		Heavyweight (native)			Lightweight (Java-based)
+Look and Feel		Platform-dependent			Pluggable, customizable
+Components		Basic GUI components			Advanced GUI components
+Performance		Faster for simple GUIs			Slightly slower but flexible
+Customization		Limited	Highly customizable
+Thread Safety		Minimal	Requires EDT for updates
+Modern Use		Legacy, lightweight GUIs		Rich, modern GUIs

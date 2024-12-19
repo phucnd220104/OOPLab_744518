@@ -8,4 +8,13 @@
 	<list key="replacehistory">
 		<item value="dsai"/>
 	</list>
+	<section name="java.lang.Class">
+		<item key="replaceBarOpen" value="true"/>
+		<list key="findhistory">
+			<item value="LinkedList"/>
+		</list>
+		<list key="replacehistory">
+			<item value="ArrayList"/>
+		</list>
+	</section>
 </section>
